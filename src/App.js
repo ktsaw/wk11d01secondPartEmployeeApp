@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+ import './App.css';
 
-function App() {
+import HomePage from "./pages/HomePage";
+import EmployeePage from "./pages/EmployeePage";
+import { useState } from "react";
+
+import employeesArr from "./data";
+console.log("this is employeesArr:", employeesArr);
+
+export default function App() {
+  const [employeeId, setEmployeeId]=useState(0)
+  const [employeeList, setEmployeeList] = useState(employeesArr)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HomePage className="homepage" setEmployeeId={setEmployeeId} />
+      
+      <EmployeePage employeeId={employeeId} employeeList ={employeeList}  />
+
     </div>
   );
 }
-
-export default App;
